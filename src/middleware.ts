@@ -22,7 +22,7 @@ export default withAuth(
         from += req.nextUrl.search;
       }
 
-      return NextResponse.redirect(new URL("/sign-in", req.url));
+      return NextResponse.redirect(new URL(`/sign-in?form=${from}`, req.url));
     }
 
     return NextResponse.next();
