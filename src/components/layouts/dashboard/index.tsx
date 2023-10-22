@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { LayoutPanelLeft, Users } from "lucide-react";
 import Link from "next/link";
+import Nav from "./nav";
 
 interface LayoutDashboardProps {
   children?: React.ReactNode;
@@ -9,10 +10,7 @@ interface LayoutDashboardProps {
 const LayoutDashboard: React.FC<LayoutDashboardProps> = ({ children }) => {
   return (
     <main className="min-h-[100dvh] flex flex-col">
-      <nav className="h-16 border-b shrink-0 px-4 flex items-center justify-between">
-        <Link href="/">YouCan</Link>
-        <Link href="/">Sign Out</Link>
-      </nav>
+      <Nav />
       <div className="flex-1 flex items-stretch">
         <div className="w-80 border-r p-4 flex flex-col gap-2">
           {[
