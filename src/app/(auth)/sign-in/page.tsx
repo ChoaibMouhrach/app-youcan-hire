@@ -105,7 +105,7 @@ const SignIn: React.FC<SignInProps> = ({ searchParams }) => {
             )}
           />
 
-          <Button isLoading={isLoading}>Sign In</Button>
+          <Button isLoading={isLoading}>Sign In With Email</Button>
         </div>
 
         <div className="flex items-center gap-4">

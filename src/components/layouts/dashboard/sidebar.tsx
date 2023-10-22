@@ -45,7 +45,7 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({
 
 const Sidebar = () => {
   return (
-    <div className="w-80 border-r p-4 flex-col gap-2 hidden lg:flex ">
+    <div className="w-72 border-r p-4 flex-col gap-2 hidden lg:flex ">
       {sidebarLinks.map((link, index) => (
         <SidebarItem key={index} link={link} />
       ))}

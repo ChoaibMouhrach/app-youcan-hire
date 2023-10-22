@@ -1,4 +1,3 @@
-import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -12,9 +11,10 @@ import {
 import { DoorOpen, LayoutPanelLeft } from "lucide-react";
 import Logo from "@/components/shared/logo";
 import MobileSideBar from "./mobile-sidebar";
+import { getAuthUser } from "@/lib/auth";
 
 const Nav: React.FC = async () => {
-  const { user } = (await getServerSession())!;
+  const { user } = (await getAuthUser())!;
 
   return (
     <nav className="h-16 border-b shrink-0 px-6 flex items-center justify-between">
@@ -37,7 +37,7 @@ const Nav: React.FC = async () => {
             </Avatar>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DropdownMenuLabel>{user?.name ?? "Unknown"}</DropdownMenuLabel>
+            <DropdownMenuLabel>{user?.role}</DropdownMenuLabel>
             <DropdownMenuLabel className="text-muted-foreground font-normal">
               {user?.email}
             </DropdownMenuLabel>

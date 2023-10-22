@@ -1,4 +1,4 @@
-import { LayoutPanelLeft, LucideIcon, Settings } from "lucide-react";
+import { LayoutPanelLeft, LucideIcon } from "lucide-react";
 
 export interface SidebarLink {
   icon: LucideIcon;
@@ -11,10 +11,5 @@ export const sidebarLinks: SidebarLink[] = [
     icon: LayoutPanelLeft,
     title: "Dashboard",
     href: "/",
-  },
-  {
-    icon: Settings,
-    title: "Settings",
-    href: "/settings",
   },
 ];

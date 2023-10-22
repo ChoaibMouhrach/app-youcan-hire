@@ -46,6 +46,8 @@ model User {
   accounts      Account[]
   sessions      Session[]
 
+  role Role @default(CONDIDAT)
+
   @@map("users")
 }
 
@@ -56,4 +58,10 @@ model VerificationToken {
 
   @@unique([identifier, token])
   @@map("verificationTokens")
+}
+
+enum Role {
+  ADMIN
+  STAFF
+  CONDIDAT
 }
