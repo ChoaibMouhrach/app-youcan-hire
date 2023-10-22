@@ -1,10 +1,10 @@
 "use client";
 
+import Logo from "@/components/shared/logo";
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormMessage,
@@ -14,6 +14,7 @@ import { Separator } from "@/components/ui/separator";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { GithubIcon } from "lucide-react";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -52,7 +53,7 @@ const SignIn: React.FC<SignInProps> = ({ searchParams }) => {
         redirect: false,
         callbackUrl,
       });
-      toast.success("Signed in with Github!");
+      toast.success("Welcome back!");
     } catch (err: any) {
       toast.error(err.message);
     }
@@ -77,25 +78,18 @@ const SignIn: React.FC<SignInProps> = ({ searchParams }) => {
   return (
     <Form {...form}>
       <form
-        className="flex flex-col gap-6 w-full max-w-md"
+        className="flex flex-col gap-6 w-full max-w-sm"
         onSubmit={form.handleSubmit(onSubmit)}
       >
-        <Button
-          isLoading={isGithubLoading}
-          type="button"
-          onClick={onGithub}
-          variant="outline"
-        >
-          {!isGithubLoading && <GithubIcon className="w-4 h-4" />}
-          Github
-        </Button>
+        <Link href="/" className="mx-auto">
+          <Logo />
+        </Link>
 
-        <div className="flex items-center gap-4">
-          <Separator className="shrink" />
-          <p className="whitespace-nowrap text-sm text-muted-foreground">
-            OR SIGN IN WITH EMAIL
+        <div className="flex flex-col gap-2 items-center justify-center">
+          <h1 className="text-xl text-primary font-bold">Welcome Back</h1>
+          <p className="text-muted-foreground text-sm">
+            Enter your email to continue
           </p>
-          <Separator className="shrink" />
         </div>
 
         <div className="flex flex-col gap-4">
@@ -106,9 +100,6 @@ const SignIn: React.FC<SignInProps> = ({ searchParams }) => {
                 <FormControl>
                   <Input {...field} placeholder="example@example.com" />
                 </FormControl>
-                <FormDescription>
-                  We&apos;ll never share your email.
-                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -116,6 +107,24 @@ const SignIn: React.FC<SignInProps> = ({ searchParams }) => {
 
           <Button isLoading={isLoading}>Sign In</Button>
         </div>
+
+        <div className="flex items-center gap-4">
+          <Separator className="shrink" />
+          <p className="whitespace-nowrap text-sm text-muted-foreground">
+            OR SIGN IN WITH
+          </p>
+          <Separator className="shrink" />
+        </div>
+
+        <Button
+          isLoading={isGithubLoading}
+          type="button"
+          onClick={onGithub}
+          variant="outline"
+        >
+          {!isGithubLoading && <GithubIcon className="w-4 h-4" />}
+          Github
+        </Button>
       </form>
     </Form>
   );

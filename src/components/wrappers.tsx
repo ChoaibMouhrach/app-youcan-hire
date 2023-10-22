@@ -1,5 +1,6 @@
 "use client";
 
+import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "./ui/toaster";
 
@@ -12,6 +13,12 @@ const Wrappers: React.FC<WrappersProps> = ({ children }) => {
     <SessionProvider>
       {children}
       <Toaster />
+      <ProgressBar
+        options={{ showSpinner: false }}
+        color="#B83375"
+        shallowRouting
+        height="4px"
+      />
     </SessionProvider>
   );
 };
