@@ -80,7 +80,12 @@ const SignIn: React.FC<SignInProps> = ({ searchParams }) => {
         className="flex flex-col gap-6 w-full max-w-md"
         onSubmit={form.handleSubmit(onSubmit)}
       >
-        <Button isLoading={isGithubLoading} type="button" onClick={onGithub}>
+        <Button
+          isLoading={isGithubLoading}
+          type="button"
+          onClick={onGithub}
+          variant="outline"
+        >
           {!isGithubLoading && <GithubIcon className="w-4 h-4" />}
           Github
         </Button>
