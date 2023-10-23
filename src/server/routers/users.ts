@@ -1,7 +1,7 @@
 import db from "@/lib/db";
-import { protectedProcedure, router } from "../trpc";
+import { adminProcedure, router } from "../trpc";
 
-const index = protectedProcedure.query(async () => {
+const index = adminProcedure.query(async () => {
   return await db.user.findMany();
 });
 
