@@ -1,4 +1,3 @@
-import AppRouter from "next/dist/client/components/app-router";
 import { usersRouter } from "./routers/users";
 import { router } from "./trpc";
 
