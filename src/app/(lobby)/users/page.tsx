@@ -3,11 +3,11 @@ import { serverClient } from "@/lib/trpc";
 import { Role } from "@prisma/client";
 import { redirect } from "next/navigation";
 
-const Users = async () => {
+const Users: React.FC = async () => {
   const session = await getAuthUser();
 
   if (session?.user.role !== Role.ADMIN) {
-    redirect("/403");
+    return redirect("/403");
   }
 
   const users = await serverClient.users.index.query();

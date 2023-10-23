@@ -1,9 +1,11 @@
+import { Role } from "@prisma/client";
 import { LayoutPanelLeft, LucideIcon, Users } from "lucide-react";
 
 export interface SidebarLink {
   icon: LucideIcon;
   title: string;
   href: string;
+  roles?: Role[];
 }
 
 export const sidebarLinks: SidebarLink[] = [
@@ -16,5 +18,6 @@ export const sidebarLinks: SidebarLink[] = [
     icon: Users,
     title: "Users",
     href: "/users",
+    roles: [Role.ADMIN],
   },
 ];

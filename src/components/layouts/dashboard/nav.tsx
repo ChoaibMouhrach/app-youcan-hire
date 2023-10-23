@@ -11,11 +11,13 @@ import {
 import { DoorOpen, LayoutPanelLeft } from "lucide-react";
 import Logo from "@/components/shared/logo";
 import MobileSideBar from "./mobile-sidebar";
-import { getAuthUser } from "@/lib/auth";
+import { User } from "@prisma/client";
 
-const Nav: React.FC = async () => {
-  const { user } = (await getAuthUser())!;
+interface NavProps {
+  user: User;
+}
 
+const Nav: React.FC<NavProps> = async ({ user }) => {
   return (
     <nav className="h-16 border-b shrink-0 px-6 flex items-center justify-between">
       <div className="flex items-center gap-4">

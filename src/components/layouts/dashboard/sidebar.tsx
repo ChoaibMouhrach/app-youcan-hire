@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { SidebarLink, sidebarLinks } from "@/config/site";
+import { User } from "@prisma/client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
@@ -43,12 +44,18 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({
   );
 };
 
-const Sidebar = () => {
+interface SidebarProps {
+  user: User;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ user }) => {
   return (
     <div className="w-72 border-r p-4 flex-col gap-2 hidden lg:flex ">
-      {sidebarLinks.map((link, index) => (
-        <SidebarItem key={index} link={link} />
-      ))}
+      {sidebarLinks.map((link, index) =>
+        link.roles && !link.roles.includes(user.role) ? null : (
+          <SidebarItem key={index} link={link} />
+        ),
+      )}
     </div>
   );
 };
